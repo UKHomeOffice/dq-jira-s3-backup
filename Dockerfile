@@ -2,6 +2,9 @@ FROM debian:jessie
 
 LABEL maintainer="dqdevops@homeoffice.gsi.gov.uk"
 
+# Set Python path
+ENV PYTHONPATH="$PYTHONPATH:/usr/bin/python"
+
 # Update, install python, pip and cron
 RUN apt-get update --quiet && \
     apt-get install --quiet --yes python python-pip cron
