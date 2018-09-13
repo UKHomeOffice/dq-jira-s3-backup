@@ -1,9 +1,8 @@
 #!/bin/bash
 
 set -e
-set -x
 
-# Set the password for pg_dump
+# Set current time
 export CURRENT=$(date +%k)
 
 if [ $CURRENT = $START_HOUR_1 -o $CURRENT = $START_HOUR_2 ]; then
@@ -43,4 +42,4 @@ else
 		# Sleep for an hour
 		echo "Not time yet..."
 		sleep 3600
-fi		
+fi
