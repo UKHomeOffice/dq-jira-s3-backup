@@ -17,7 +17,9 @@ groupadd docker && \
 usermod -aG docker s3user && \
 mkdir -p /home/s3user && \
 chown -R s3user:s3user /home/s3user/ && \
-mkdir /scripts/
+mkdir /scripts/ && \
+mkdir /backup/ && \
+chown -R s3user:s3user /backup
 
 # Copy in backup script
 ADD scripts /scripts/
