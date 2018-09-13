@@ -3,11 +3,14 @@
 set -e
 set -x
 
+# Set the password for pg_dump
+export CURRENT=$(date +%k)
+
+if [ $CURRENT = $START_HOUR_1 -o $CURRENT = $START_HOUR_2 ]; then
+
+# Set variables for date and time - used for folder structure
 export BACKUP_DAY=$(date +%Y-%b-%d)
 export BACKUP_TIME=$(date +%Y-%b-%d-%H%M)
-
-# Set the password for pg_dump
-export PGPASSWORD="$DATABASE_PASSWORD"
 
 echo "Backups starting..."
 
@@ -35,3 +38,9 @@ echo "Copying export directory to S3"
 /usr/local/bin/aws s3 cp --recursive --quiet /var/atlassian/jira/export/ s3://$BUCKET_NAME/jira-backup/export/ || echo "FAILED!"
 
 echo "Backups finished"
+
+else
+		# Sleep for an hour
+		echo "Not time yet..."
+		sleep 3600
+fi		
