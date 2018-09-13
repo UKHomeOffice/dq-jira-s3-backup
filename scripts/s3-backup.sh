@@ -37,6 +37,8 @@ echo "Copying export directory to S3"
 /usr/local/bin/aws s3 cp --recursive --quiet /var/atlassian/jira/export/ s3://$BUCKET_NAME/jira-backup/export/ || echo "FAILED!"
 
 echo "Backups finished"
+    # Sleep for an hour
+		sleep 3600
 
 else
 		# Sleep for an hour
