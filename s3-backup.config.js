@@ -1,7 +1,7 @@
 module.exports = {
   apps : [
     {
-    	name	: "Jira-bacup-to-s3", 
+    	name	: "Jira-bacup-to-s3",
 	   	script	: "/scripts/s3-backup.sh",
     	exec_interpreter: "bash",
     	env: {
@@ -9,7 +9,7 @@ module.exports = {
     	  START_HOUR_2: 18,
     	  DATABASE_HOST: process.argv[5],
     	  DATABASE_NAME: process.argv[6],
-    	  DATABASE_PASSWORD: process.argv[7],
+    	  PGPASSWORD: process.argv[7],
     	  DATABASE_PORT: process.argv[8],
     	  DATABASE_USERNAME: process.argv[9],
     	  BUCKET_NAME: process.argv[10],
