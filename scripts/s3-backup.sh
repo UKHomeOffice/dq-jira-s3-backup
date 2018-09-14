@@ -24,7 +24,7 @@ mkdir -p /backup/jira-db/$BACKUP_DAY/$BACKUP_TIME/
 pg_dump -h $DATABASE_HOST -U $DATABASE_USERNAME $DATABASE_NAME > /backup/jira-db/$BACKUP_DAY/$BACKUP_TIME/jira-db.sql
 
 # Cleanup export directory (keep 1 months backups on disk)
-find "JIRA_HOME/export/" -type f -iname "*.zip" -mtime +2 -exec rm {} \;
+find "/var/atlassian/jira/export/" -type f -iname "*.zip" -mtime +2 -exec rm {} \;
 find "/backup/jira/" -type d -mtime +2 -exec rm {} \:
 find "/backup/jira-db/" -type d -mtime +2 -exec rm {} \:
 
