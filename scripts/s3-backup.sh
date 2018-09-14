@@ -16,7 +16,7 @@ echo "Backups starting..."
 # Create a backup of the attachment and avatar directories in JIRA_HOME/data
 echo "Backing up data directory"
 mkdir -p /backup/jira/$BACKUP_DAY/
-tar -czvf /backup/jira/$BACKUP_DAY/$BACKUP_TIME-jira.tar.gz /var/atlassian/jira/data
+tar -czf /backup/jira/$BACKUP_DAY/$BACKUP_TIME-jira.tar.gz /var/atlassian/jira/data
 
 # Create a dump of the database
 echo "Backing up database"
