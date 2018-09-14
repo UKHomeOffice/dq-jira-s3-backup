@@ -25,8 +25,8 @@ pg_dump -h $DATABASE_HOST -U $DATABASE_USERNAME $DATABASE_NAME > /backup/jira-db
 
 # Cleanup export directory (keep 1 months backups on disk)
 find "/var/atlassian/jira/export/" -type f -iname "*.zip" -mtime +2 -exec rm {} \;
-find "/backup/jira/" -type d -mtime +2 -exec rm {} \:
-find "/backup/jira-db/" -type d -mtime +2 -exec rm {} \:
+find "/backup/jira/" -type d -mtime +2 -exec rm {} \;
+find "/backup/jira-db/" -type d -mtime +2 -exec rm {} \;
 
 # Copy to S3 bucket
 echo "Copying data directory to S3"
