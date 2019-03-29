@@ -3,12 +3,17 @@ FROM python:2.7
 LABEL maintainer="dqdevops@homeoffice.gsi.gov.uk"
 
 ENV USERMAP_UID 1000
+ENV VERSION=node_8.x
+ENV DISTRO=stretch
+# https://hub.docker.com/_/python
 
 RUN apt-get update --quiet \
     && apt-get upgrade -y \
-    && apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y curl apt-transport-https ca-certificates\
+    && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+	&& echo "deb https://deb.nodesource.com/$VERSION $DISTRO main" | tee /etc/apt/sources.list.d/nodesource.list \
+	&& echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | tee -a /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update -y && apt-get install -y nodejs \
     && npm install -g pm2
 
 RUN groupadd -r s3user && \
